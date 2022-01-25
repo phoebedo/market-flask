@@ -4,5 +4,18 @@ Home Page
 {%endblock%}
 
 {%block content%}
-<h1>This is our content for home page</h1>
+<div class="container">
+    <div class="col-md-10 p-lg-5 mr-auto ml-auto my-5">
+        <h1 class="display-4 font-weight-normal">Welcome to Market</h1>
+        <p class="lead font-weight-normal">
+            Manage your shopping list within your budget
+        </p>
+        <a href="{{url_for('market_page')}}" class="btn btn-primary">Get Started</a>
+    </div>
+
+    
+    
+
+
+</div>
 {%endblock%}
