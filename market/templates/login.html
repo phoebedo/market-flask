@@ -1,27 +1,22 @@
-{% extends 'base.html'%} {%block title%} Register {%endblock%} {%block content%}
+{% extends 'base.html'%} {%block title%} Login {%endblock%} {%block content%}
 <div class="container">
   <form method="POST" class="form-register" style="color: white" action="">
     {{form.hidden_tag()}}
     <h1 class="h3 mb-3 mt-2 font-wight-normal text-center">
-      Create Your Account
+      Login
     </h1>
-    
+    <h5 class=" mb-3 mt-2 font-wight-normal text-center">Enter your Login Information</h5>
+
     <br />
     <div class="col-lg-8 col-md-10 col-sm-12 mr-auto ml-auto mb-3">
-      {{form.username.label()}} {{form.username(class="form-control",
+      {{form.username.label()}} 
+      {{form.username(class="form-control",
       placeholder= "User Name")}}
     </div>
     <div class="col-lg-8 col-md-10 col-sm-12 mr-auto ml-auto mb-3">
-      {{form.email_address.label()}} {{form.email_address(class="form-control",
-      placeholder= "Email Address")}}
-    </div>
-    <div class="col-lg-8 col-md-10 col-sm-12 mr-auto ml-auto mb-3">
-      {{form.password1.label()}} {{form.password1(class="form-control",
+      {{form.password.label()}} 
+      {{form.password(class="form-control",
       placeholder= "Password")}}
-    </div>
-    <div class="col-lg-8 col-md-10 col-sm-12 mr-auto ml-auto mb-3">
-      {{form.password2.label()}} {{form.password2(class="form-control",
-      placeholder= "Confirm Password")}}
     </div>
     {% with messages= get_flashed_messages(with_categories=true) %} 
         {% if messages %}
@@ -39,12 +34,17 @@
 
         {{form.submit(class="btn btn-md btn-block  btn-primary")}}
     </div>
+    
+
+    <br>
     <div class="check-box mb-3 text-center">
-        <h6>Already have an account?</h6>
-        <a href="{{url_for('login_page')}}" class="btn btn-sm btn-secondary">Login</a>
+        <h6>Do not have an account?</h6>
+        <a href="{{url_for('register_page')}}" class="btn btn-sm btn-secondary">Register</a>
 
     </div>
+
+    <br>
+
+    {%endblock%}
   </form>
 </div>
-
-{%endblock%}
