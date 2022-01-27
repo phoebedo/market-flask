@@ -28,3 +28,8 @@ class LoginForm(FlaskForm):
 
 
 
+class PurchaseForm(FlaskForm):
+    submit = SubmitField(label='Purchase')
+
+class SellForm(FlaskForm):
+    submit = SubmitField(label='Sell')

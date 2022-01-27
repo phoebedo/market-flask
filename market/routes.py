@@ -1,23 +1,25 @@
-# from flask import Flask, render_template
-# app = Flask(__name__)
-from crypt import methods
 from market import app
 from flask import render_template, redirect, url_for, flash
 from market.models import Item, User
-from market.forms import LoginForm, RegisterForm
+from market.forms import LoginForm, RegisterForm, PurchaseForm, SellForm
 from market import db
 from flask_login import login_user, logout_user, login_required
+
 
 @app.route("/")
 @app.route('/home')
 def homepage():
     return render_template("home.html")
 
+
 @app.route('/market')
 @login_required
 def market_page():
+    purchase_form= PurchaseForm()
+    sell_form=SellForm()
     items = Item.query.all()
-    return render_template('market.html', items=items)
+    return render_template('market.html', items=items, purchase_form=purchase_form)
+
 
 @app.route('/register', methods=['GET','POST'])
 def register_page():
@@ -38,6 +40,7 @@ def register_page():
         
     return render_template("register.html", form=form)
 
+
 @app.route('/login', methods=['GET','POST'])
 def login_page():
     form = LoginForm()
@@ -51,6 +54,8 @@ def login_page():
             flash('Username and password are not match! Please try again', category='danger')
 
     return render_template('login.html', form=form)
+
+
 @app.route('/logout')
 def logout_page():
     logout_user()
